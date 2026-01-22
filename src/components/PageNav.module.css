@@ -1,3 +1,4 @@
+/* application of the css modules */
 .nav {
   background-color: orangered;
 }
@@ -6,4 +7,12 @@
   list-style: none;
   display: flex;
   justify-content: space-between;
+}
+/* to make an css property available global this way we use the global function
+:global(.test) {
+  background-color: orange;
+} */
+
+.nav :global(.active) {
+  background-color: green;
 }

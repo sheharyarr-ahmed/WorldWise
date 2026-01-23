@@ -16,7 +16,7 @@ function App() {
       try {
         setIsLoading(true);
         const res = await fetch(`${BASE_URL}/cities`);
-        const data = res.json();
+        const data = await res.json();
         setCities(data);
       } catch {
         alert("THERE WAS AN ERROR LOADING DATA");
@@ -39,7 +39,7 @@ function App() {
         <Route path="app" element={<AppLayout />}>
           <Route
             index
-            element={<CityList ciites={cities} isLoading={isLoading} />}
+            element={<CityList cities={cities} isLoading={isLoading} />}
           />
           <Route
             path="cities"

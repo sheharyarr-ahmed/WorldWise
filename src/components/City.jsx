@@ -19,7 +19,7 @@ function City() {
 
   useEffect(
     function () {
-      getCity(id);
+      getCity(Number(id));
     },
     [id, getCity],
   );

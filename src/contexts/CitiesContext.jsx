@@ -15,6 +15,7 @@ function CitiesProvider({ children }) {
   const [cities, setCities] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [currentCity, setCurrentCity] = useState({});
+  const [lastVisitedPosition, setLastVisitedPosition] = useState(null);
   useEffect(function () {
     async function fetchCities() {
       try {
@@ -34,21 +35,41 @@ function CitiesProvider({ children }) {
 
   const getCity = useCallback(async function getCity(id) {
     if (!id) return;
+    const cleanId = String(id).split("?")[0];
+    const numericId = Number(cleanId);
     try {
       setIsLoading(true);
-      const res = await fetch(`${BASE_URL}/cities/${id}`);
+      const res = await fetch(`${BASE_URL}/cities/${cleanId}`);
       if (!res.ok) throw new Error("Failed to load city");
       const data = await res.json();
       setCurrentCity(data);
+      if (data?.position)
+        setLastVisitedPosition([data.position.lat, data.position.lng]);
     } catch {
+      const fallback = cities.find(
+        (city) =>
+          String(city.id) === cleanId ||
+          (Number.isFinite(numericId) && city.id === numericId),
+      );
+      if (fallback) {
+        setCurrentCity(fallback);
+        if (fallback?.position)
+          setLastVisitedPosition([
+            fallback.position.lat,
+            fallback.position.lng,
+          ]);
+        return;
+      }
       alert("THERE WAS AN ERROR LOADING DATA");
     } finally {
       setIsLoading(false);
     }
-  }, []);
+  }, [cities]);
 
   return (
-    <CitiesContext.Provider value={{ cities, isLoading, currentCity, getCity }}>
+    <CitiesContext.Provider
+      value={{ cities, isLoading, currentCity, getCity, lastVisitedPosition }}
+    >
       {children}
     </CitiesContext.Provider>
   );

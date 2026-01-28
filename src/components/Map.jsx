@@ -38,3 +38,5 @@ function Map() {
 }
 
 export default Map;
+
+//implemented the nano on ma cos terminal

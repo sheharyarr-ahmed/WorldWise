@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import styles from "./CityItem.module.css";
 import { useCities } from "../contexts/CitiesContext";
+import Message from "./Message";
 
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
@@ -15,7 +16,7 @@ function CityItem({ city }) {
   const { currentCity } = useCities();
   const { cityName, emoji, date, id, position } = city;
 
-  console.log(position);
+  const formattedDate = date ? formatDate(date) : null;
   return (
     <li>
       <Link
@@ -26,7 +27,11 @@ function CityItem({ city }) {
       >
         <span className={styles.emoji}>{emoji}</span>
         <h3 className={styles.name}>{cityName}</h3>
-        <time className={styles.date}>{formatDate(date)}</time>
+        {formattedDate ? (
+          <time className={styles.date}>{formattedDate}</time>
+        ) : (
+          <Message message="Date unknown for this city" />
+        )}
         <button className={styles.deleteBtn}>&times;</button>
       </Link>
     </li>

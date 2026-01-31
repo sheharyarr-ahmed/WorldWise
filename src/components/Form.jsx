@@ -22,7 +22,7 @@ function Form() {
   const [country, setCountry] = useState("");
   const [date, setDate] = useState(new Date());
   const [notes, setNotes] = useState("");
-  const { createCity } = useCities();
+  const { createCity, isLoading } = useCities();
   const navigate = useNavigate();
   const [isLoadingGeocoding, setIsLoadingGeocoding] = useState(false);
 
@@ -76,6 +76,7 @@ function Form() {
     };
 
     const createdCity = await createCity(newCity);
+    navigate("/app/cities");
     if (createdCity?.id)
       navigate(`/app/cities/${createdCity.id}?lat=${lat}&lng=${lng}`);
   }
@@ -83,7 +84,10 @@ function Form() {
   if (geocodingError) return <Message message={geocodingError} />;
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <form
+      className={`${styles.form} ${isLoading ? styles.loading : ""}`}
+      onSubmit={handleSubmit}
+    >
       <div className={styles.row}>
         <label htmlFor="cityName">City name</label>
         <input

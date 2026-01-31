@@ -13,8 +13,13 @@ const formatDate = (date) =>
   }).format(new Date(date));
 
 function CityItem({ city }) {
-  const { currentCity } = useCities();
+  const { currentCity, deleteCity } = useCities();
   const { cityName, emoji, date, id, position } = city;
+
+  function handleClick(e) {
+    e.preventDefault();
+    deleteCity(id);
+  }
 
   const formattedDate = date ? formatDate(date) : null;
   return (
@@ -32,7 +37,9 @@ function CityItem({ city }) {
         ) : (
           <Message message="Date unknown for this city" />
         )}
-        <button className={styles.deleteBtn}>&times;</button>
+        <button className={styles.deleteBtn} onClick={handleClick}>
+          &times;
+        </button>
       </Link>
     </li>
   );

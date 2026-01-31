@@ -1,74 +1,15 @@
 {
   "cities": [
     {
-      "cityName": "Lisbon",
-      "country": "Portugal",
-      "emoji": "🇵🇹",
-      "date": "2027-10-31T15:59:59.138Z",
-      "notes": "My favorite city so far!",
+      "id": "bcb1",
+      "cityName": "Kwali",
+      "country": "Nigeria",
+      "emoji": "🇳🇬",
+      "date": "2026-01-31T11:57:38.425Z",
+      "notes": "heyhey\n",
       "position": {
-        "lat": 38.727881642324164,
-        "lng": -9.140900099907554
-      },
-      "id": "73930385"
-    },
-    {
-      "cityName": "Madrid",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2027-07-15T08:22:53.976Z",
-      "notes": "",
-      "position": {
-        "lat": 40.46635901755316,
-        "lng": -3.7133789062500004
-      },
-      "id": "17806751"
-    },
-    {
-      "cityName": "Berlin",
-      "country": "Germany",
-      "emoji": "🇩🇪",
-      "date": "2027-02-12T09:24:11.863Z",
-      "notes": "Amazing 😃",
-      "position": {
-        "lat": 52.53586782505711,
-        "lng": 13.376933665713324
-      },
-      "id": "98443197"
-    },
-    {
-      "id": "1574",
-      "cityName": "Alcazar de San Juan",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "notes": "hey i have been there",
-      "position": {
-        "lat": 39.13006024213511,
-        "lng": -3.2958984375000004
-      }
-    },
-    {
-      "id": "87f9",
-      "cityName": "Atakpame",
-      "country": "Togo",
-      "emoji": "🇹🇬",
-      "date": "2026-01-29T13:39:22.300Z",
-      "notes": "",
-      "position": {
-        "lat": 7.542209995927096,
-        "lng": 1.2002563476562502
-      }
-    },
-    {
-      "id": "54f7",
-      "cityName": "Islamabad",
-      "country": "Pakistan",
-      "emoji": "🇵🇰",
-      "date": "2026-01-29T13:44:20.658Z",
-      "notes": "",
-      "position": {
-        "lat": 33.62440150122691,
-        "lng": 72.9589100327087
+        "lat": 8.754794702435618,
+        "lng": 7.075195312500001
       }
     }
   ]

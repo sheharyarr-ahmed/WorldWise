@@ -87,7 +87,25 @@ function CitiesProvider({ children }) {
         setLastVisitedPosition([data.position.lat, data.position.lng]);
       return data;
     } catch {
-      alert("there was an error loading the data....");
+      alert("there was an error creating  the data....");
+      return null;
+    } finally {
+      setIsLoading(false);
+    }
+  }
+  async function deleteCity(id) {
+    try {
+      setIsLoading(true);
+      const res = await fetch(`${BASE_URL}/cities/${id}`, {
+        method: "DELETE",
+      });
+      if (!res.ok) throw new Error("Failed to delete city");
+      setCities((prev) => prev.filter((city) => city.id !== id));
+      if (currentCity?.id === id) {
+        setCurrentCity({});
+      }
+    } catch {
+      alert("there was an error deleting the data....");
       return null;
     } finally {
       setIsLoading(false);
@@ -103,6 +121,7 @@ function CitiesProvider({ children }) {
         getCity,
         lastVisitedPosition,
         createCity,
+        deleteCity,
       }}
     >
       {children}

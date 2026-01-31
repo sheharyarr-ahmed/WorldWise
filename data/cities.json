@@ -1,15 +1,39 @@
 {
   "cities": [
     {
-      "id": "bcb1",
-      "cityName": "Kwali",
-      "country": "Nigeria",
-      "emoji": "🇳🇬",
-      "date": "2026-01-31T11:57:38.425Z",
-      "notes": "heyhey\n",
+      "id": "2da6",
+      "cityName": "Shahristan",
+      "country": "Afghanistan",
+      "emoji": "🇦🇫",
+      "date": "2026-01-31T12:59:22.851Z",
+      "notes": "add",
       "position": {
-        "lat": 8.754794702435618,
-        "lng": 7.075195312500001
+        "lat": 33.61461929233378,
+        "lng": 66.46728515625001
+      }
+    },
+    {
+      "id": "da52",
+      "cityName": "Paghman",
+      "country": "Afghanistan",
+      "emoji": "🇦🇫",
+      "date": "2026-01-31T13:05:15.855Z",
+      "notes": "hi",
+      "position": {
+        "lat": 34.59704151614417,
+        "lng": 68.95019531250001
+      }
+    },
+    {
+      "id": "d997",
+      "cityName": "Fayzabad",
+      "country": "Afghanistan",
+      "emoji": "🇦🇫",
+      "date": "2026-01-31T13:05:32.707Z",
+      "notes": "hii",
+      "position": {
+        "lat": 37.19533058280065,
+        "lng": 70.66406250000001
       }
     }
   ]

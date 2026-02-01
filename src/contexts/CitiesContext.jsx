@@ -62,7 +62,7 @@ function reducer(state, action) {
 }
 
 function CitiesProvider({ children }) {
-  const [{ cities, isLoading, currentCity }, dispatch] = useReducer(
+  const [{ cities, isLoading, currentCity, error }, dispatch] = useReducer(
     reducer,
     initialState,
   );
@@ -88,27 +88,24 @@ function CitiesProvider({ children }) {
     fetchCities();
   }, []);
 
-  const getCity = useCallback(
-    async function getCity(id) {
-      if (!id) return;
-      dispatch({ type: "loading" });
-      const cleanId = String(id).split("?")[0];
-      try {
-        const res = await fetch(`${BASE_URL}/cities/${cleanId}`);
-        if (!res.ok) throw new Error("Failed to load city");
-        const data = await res.json();
-        dispatch({ type: "city/loaded", payload: data });
-        if (data?.position)
-          setLastVisitedPosition([data.position.lat, data.position.lng]);
-      } catch {
-        dispatch({
-          type: "rejected",
-          payload: "THERE WAS AN ERROR LOADING THE CITY ",
-        });
-      }
-    },
-    [],
-  );
+  const getCity = useCallback(async function getCity(id) {
+    if (!id) return;
+    dispatch({ type: "loading" });
+    const cleanId = String(id).split("?")[0];
+    try {
+      const res = await fetch(`${BASE_URL}/cities/${cleanId}`);
+      if (!res.ok) throw new Error("Failed to load city");
+      const data = await res.json();
+      dispatch({ type: "city/loaded", payload: data });
+      if (data?.position)
+        setLastVisitedPosition([data.position.lat, data.position.lng]);
+    } catch {
+      dispatch({
+        type: "rejected",
+        payload: "THERE WAS AN ERROR LOADING THE CITY ",
+      });
+    }
+  }, []);
 
   async function createCity(newCity) {
     dispatch({ type: "loading" });
@@ -157,6 +154,7 @@ function CitiesProvider({ children }) {
         cities,
         isLoading,
         currentCity,
+        error,
         getCity,
         lastVisitedPosition,
         createCity,
